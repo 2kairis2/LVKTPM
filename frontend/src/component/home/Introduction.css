@@ -1,0 +1,92 @@
+.Introduction {
+  display: grid;
+  grid-template-areas: "image content";
+  grid-template-columns: 50% 50%;
+  margin: 80px 16px 0;
+}
+
+.introduction-img {
+  color: #000;
+  font-family: Roboto;
+  text-align: left;
+  font-size: 128px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-top: 43px;
+}
+.introduction-content {
+  padding: 50px 48px 0 48px;
+  color: #000;
+  font-family: Roboto;
+  font-size: 96px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.content-title h2 {
+  color: #000;
+  text-align: left;
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: 5px;
+}
+
+.content-text {
+  margin-top: 5px;
+  color: #000;
+  text-align: left;
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.content-text > p {
+  margin-bottom: 36px;
+}
+
+.content-app {
+  display: flex;
+  flex-direction: row;
+
+}
+
+.content-app .intro-img {
+  width: 100%;
+}
+.intro1 {
+  display: flex;
+  flex-direction: column;
+  height: 219;
+  margin-right: 30px;
+}
+.img-intro1 {
+  width: 75px;
+  height: 75.998px;
+  margin-left: 28px;
+}
+.content-app-title1 {
+  width: 135px;
+  height: 74px;
+}
+.content-app-title1 p {
+  color: var(--Text, #000);
+
+  text-align: center;
+  font-family: Roboto;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.img-intro3{
+  width: 68px;
+  height: 75.998px;
+  margin-left: 28px;
+}

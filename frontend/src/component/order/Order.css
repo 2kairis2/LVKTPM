@@ -1,0 +1,175 @@
+.head-table h1,
+.head-table h2 {
+  text-transform: uppercase;
+}
+.wrapper-order {
+  display: flex;
+  flex-direction: column;
+  margin: 25px 25px 10px 15px;
+  font-size: 22px;
+}
+/* Phần tiêu đề trang */
+.title-page {
+  text-align: center;
+}
+.wrapper-order .total {
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 5px;
+}
+/* Phần danh sách sản phẩm */
+.order-detail {
+  margin: 48px;
+  padding: 20px;
+  border: #ccc 1px solid;
+  border-radius: 5px;
+}
+.itemList {
+  display: flex;
+  flex-direction: column;
+}
+.wrapper-order .head-table,
+.wrapper-order .in-order {
+  display: grid;
+  grid-template-columns: 441px 184px 133px auto;
+  gap: 103px;
+  border-bottom: 1px solid var(--Text, #828080);
+  text-align: center;
+}
+/* .head-total, .total{
+    text-align: center;
+} */
+.item {
+  border-bottom: 1px solid #8e8e8e;
+}
+.wrapper-order .in-order {
+  display: grid;
+  grid-template-columns: 420px 131px 227px 227px;
+  gap: 90px;
+}
+.wrapper-order .quantity-item {
+  padding: 0;
+  margin-left: 15px;
+  /* justify-content: flex-end; */
+  padding: 0;
+}
+.quantity-item input.q-order {
+  border: none;
+  font-size: 20px;
+  text-align: center;
+  width: 130px;
+}
+.wrapper-order .price-item {
+  align-items: center;
+  justify-content: flex-end;
+}
+.item-detail {
+  display: flex;
+  align-items: center;
+}
+.item-detail img {
+  background: cover no-repeat, #d9d9d9;
+  width: 120px;
+  height: 120px;
+  margin: 5px;
+}
+.total-bill {
+  margin-right: 50px;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+.total-bill div {
+  margin-left: 110px;
+  margin-right: 10px;
+}
+
+/* Phần địa chỉ giao hàng */
+.address-form,
+.choose-receivers {
+  width: 520px;
+}
+.choose-receivers p,
+.choose-receivers label {
+  font-size: 18px;
+}
+.inf-custom {
+  display: flex;
+  justify-content: space-evenly;
+}
+.inf-custom h2 {
+  border-bottom: 1px solid#000;
+  padding: 27px;
+}
+.form-custom {
+  font-weight: 400;
+  text-transform: uppercase;
+}
+.address-form label {
+  font-weight: 300;
+  font-size: 14px;
+  margin-left: 20px;
+  margin-bottom: 5px;
+}
+.address-form input {
+  border: 0.5px solid var(--Text, #000);
+  background: var(--text, #fff);
+  height: 35px;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+.address-form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Phần phương thức giao hàng */
+.transport {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin: 30px;
+  width: 1390px;
+  padding: 10px 143px 10px 145px;
+}
+.transport h2,
+.footbill h2 {
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--Text, #000);
+}
+.select-radio {
+  display: flex;
+  flex-direction: column;
+}
+.option-gh {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  height: 44px;
+  background: var(--footer, #e7e3de);
+}
+.option-gh div {
+  width: 250px;
+}
+#ghtk + label,
+#ghn + label,
+#payment + label {
+  display: inline;
+  margin-left: 2px;
+}
+.footbill {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px;
+}
+
+/* Nút đặt hàng */
+.summary p {
+  display: flex;
+  justify-content: space-between;
+}
+.check-out {
+  align-items: center;
+}

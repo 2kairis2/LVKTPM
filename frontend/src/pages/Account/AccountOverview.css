@@ -1,0 +1,55 @@
+@media (max-width: 500px) {
+    .column {
+        flex-basis: 100%;
+    }
+}
+
+.infor-list {
+    list-style-type: none;
+    margin-block: 10px;
+    padding: 15px;
+}
+
+.row-list {
+    margin-bottom: 15px;
+    /* Tạo khoảng cách giữa các dòng */
+
+    font-size: large;
+    clear: both;
+    overflow: auto;
+    /* Tạo một block formatting context */
+
+}
+
+.key {
+    width: 20%;
+    float: left;
+    font-weight: bold;
+
+    text-align: left;
+
+}
+
+.value {
+
+    float: right;
+    text-align: right;
+
+}
+
+@media (max-width: 768px) {
+    .key {
+        width: 100%;
+
+        text-align: left;
+    }
+
+    .value {
+        text-align: left;
+        float: none;
+    }
+}
+.list-item{
+    display: flex;
+    flex-direction: row;
+}

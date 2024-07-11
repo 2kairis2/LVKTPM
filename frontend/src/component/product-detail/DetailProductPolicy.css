@@ -1,0 +1,24 @@
+.detail-product-policy-container{
+  display: flex;
+  flex-direction: column;
+  margin-top: 75px;
+  background-color: #f1ede8;
+}
+.title {
+    display: flex;
+    justify-content: center;
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding: 27px 0 69px 0;
+}
+.container-imgage{
+    display: flex;
+    justify-content: center;
+}
+.policy-img {
+  width: 1362px;
+  height: 165px;
+}

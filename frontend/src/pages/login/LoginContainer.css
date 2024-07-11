@@ -1,0 +1,127 @@
+.LoginContainer {
+  height: 100vh;
+  background-color: #ffffff;
+  overflow: hidden;
+
+}
+.login-content .login-image img {
+  width: 367px;
+  height: 150px;
+
+}
+.InnerLoginContainer {
+  display: flex;
+  height: 100%;
+}
+.fixed-img img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.fixed-img {
+  flex: 1;
+}
+.LoginContainer .login-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.LoginContainer .Title p {
+  color: var(--Text, #000);
+
+
+  text-align: center;
+  font-family: Inter;
+  font-size: 20px;
+
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+.forgot-password a {
+  margin-left: 200px;
+  margin-top: -24px;
+  text-decoration: underline;
+}
+
+.forgot-password a:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.login-input-field {
+  border: 0;
+  border-bottom: 1px solid #000;
+
+  width: 500px;
+  padding-top: 12px;
+  color: #000000;
+
+  font-family: Roboto;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+  padding-top: 12px;
+
+}
+.password .input-item {
+  border: none;
+}
+
+.login-input-field:focus {
+  outline: none;
+}
+
+.login-input-field:focus::placeholder {
+  color: transparent;
+
+}
+.button-container {
+  margin-top: 55px;
+  display: flex;
+  flex-direction: column;
+
+}
+.login-button button {
+  text-transform: uppercase;
+  background-color: #fff;
+  width: 312px;
+
+  height: 60px;
+  padding: 12px 48px;
+  margin: 20px 0;
+
+}
+
+.login-button button:hover {
+  cursor: pointer;
+  background-color: #897358;
+  color: #fff;
+  border: #897358;
+}
+
+.input-item {
+  position: relative;
+  margin: 30px 0;
+}
+
+.input-item .input-label {
+  /* position: absolute; */
+  display: block;
+  /* left: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+  transition: all .5 linear; */
+}
+
+/* .login-input-field:focus + .input-label {
+  top: 0;
+  transform: translate(0, -50%);
+} */

@@ -1,0 +1,18 @@
+.AdminPage{
+ 
+    height: 100%;
+    width: 100%;
+   
+}
+.AdminPage .content-right{
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    
+}
+.AdminPage .sidebar-left{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9;
+}

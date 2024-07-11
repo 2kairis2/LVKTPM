@@ -1,0 +1,55 @@
+.DetailProductRecommend {
+  margin: 96px 36px 0;
+}
+
+.DetailProductRecommend .recommend-title {
+  font-size: 48px;
+  color: #535353;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.DetailProductRecommend .recommend-detail {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 36px 0;
+}
+.will-like {
+  width: 322px;
+  height: 97px;
+  color: black;
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+}
+.will-like:focus {
+    border-bottom: 5px solid #8e7033;
+    color: var(--Text2, #8e7033) 
+}
+.seen{
+    width: 322px;
+    height: 97px;
+    color: black;
+    font-family: Roboto;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+.seen:focus{
+    border-bottom: 5px solid #8e7033;
+    color: var(--Text2, #8e7033) 
+}
+.DetailProductRecommend .active{
+  background-color: white;
+}

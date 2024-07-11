@@ -1,0 +1,94 @@
+.RegisterContainer {
+    min-height: 70vh; 
+    background-color: #ffffff;
+}
+
+.InnerRegisterContainer {
+    display: flex;
+    height: 600px; 
+    width: 100%;
+}
+
+.fixed-img img {
+    height: 115%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.fixed-img {
+    flex: 1;
+}
+
+.register-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    
+    flex-direction: column;
+}
+
+.Title {
+    color: var(--Text, #000);
+    text-align: center;
+    font-family: Roboto;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.forgot-password a {
+    margin-left: 200px;
+    margin-top: -24px;
+    text-decoration: underline;
+}
+
+.forgot-password a:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.register-input-field {
+    border: 0;
+    border-bottom: 1px solid #000;
+    width: 560px;
+    padding-top: 5px;
+    font-size: 16px;
+}
+
+.register-input-field:focus {
+    outline: none;
+}
+
+.register-input-field:focus::placeholder {
+    color: transparent;
+}
+
+.register-button button {
+    text-transform: uppercase;
+    background-color: #fff;
+    width: 312px;
+}
+
+.register-button button:hover {
+    cursor: pointer;
+    background-color: #897358;
+    color: #fff;
+    border: #897358;
+}
+
+.RegisterContainer .input-item {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: 15px 0;
+}
+
+.RegisterContainer .input-item .input-label {
+    display: block;
+    font-size: 16px;
+    font-family: Roboto;
+    font-weight: 300;
+}

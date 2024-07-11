@@ -1,0 +1,137 @@
+.detail-productsale-container {
+  /* margin-top: 18px; */
+  display: flex;
+  flex-direction: row;
+  background-color: #f4f4f4;
+  /* height: 800px; */
+  
+}
+/* IMAGE */
+.image-layout {
+  margin-top: 30px;
+  display: flex;
+  width: 100%;
+  
+}
+
+img {
+  width: 98%;
+  height: 80%;
+}
+/* DETAIL */
+.detail-layout {
+  display: flex;
+  flex-direction: column;
+  margin-left: 75px;
+  margin-top: 34px;
+  flex: 80%;
+}
+.detail-layout h2 {
+  color: var(--Sort, #7f6e59);
+  font-family: Roboto;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  text-transform: uppercase;
+}
+.h1 {
+  color: var(--Text, #000);
+
+  font-family: Roboto;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 100%;
+  position: relative;
+}
+.h1::after {
+  content: "";
+  position: absolute;
+  top: 100%; /* Đặt after ở dưới của h1 */
+  left: 0;
+  margin-top: 30px;
+  width: 26.976%; /* Chiếm một nửa chiều rộng của h1 */
+  height: 5px; /* Chiều cao của after */
+  background-color: #000;
+  transform: translate(1%, 5px);
+}
+.info {
+  margin-top: 70px;
+  text-align: left;
+  width: 70%;
+}
+.info p {
+  color: var(--text-p, #838383);
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.product-button {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  margin-top: 14px;
+}
+.detail-productsale-container .add-product-btn {
+  width: 304px;
+  height: 55px;
+  margin-bottom: 20px;
+  color: var(--Button, #897358);
+  text-align: center;
+  font-family: Roboto;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  background-color: white;
+  border-color: #897358;
+}
+.purchase-btn {
+  border-color: #897358;
+  color: var(--Button, #897358);
+  width: 304px;
+  height: 55px;
+  text-align: center;
+  font-family: Roboto;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  background-color: white;
+}
+.detail-productsale-container .add-product-btn:hover{
+  background-color: #897358;
+  color: white;
+  cursor: pointer;
+}
+.detail-productsale-container .add-product-btn:active{
+  background-color: #897358;
+  color: white;
+  cursor: pointer;
+}
+.purchase-btn:hover{
+  background-color: #897358;
+  color: white;
+  cursor: pointer;
+}
+.purchase-btn:active{
+  background-color: #897358;
+  color: white;
+  cursor: pointer;
+}
+.detail-layout .detail-container .price{
+  color: var(--Sort, #000000);
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  
+}

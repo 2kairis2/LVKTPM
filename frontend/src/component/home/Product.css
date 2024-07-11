@@ -1,0 +1,56 @@
+.product {
+  display: grid;
+}
+.container-content {
+  color: #000;
+  font-family: Roboto;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-top: 250px;
+  margin-left: 16px;
+  margin-bottom: 112px;
+}
+.container-img {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Tạo 4 cột với độ rộng bằng nhau */
+  gap: 20px; /* Khoảng cách giữa các hình ảnh */
+}
+.container-img img:hover{
+  box-shadow: 8px 8px 20px rgb(197, 197, 197);
+  transform: scale(1.05);
+}
+
+.container-img a {
+  width: 100%;
+}
+
+.container-img img {
+  width: 100%;
+  height: auto;
+}
+
+.image-container {
+  position: relative;
+  margin: 10px;
+}
+.image-container:hover{
+  cursor: pointer;
+}
+
+.product-name-overlay {
+  position: absolute;
+  bottom: 10px;
+  left: 9%;
+  right: 0;
+  text-align: center;
+  color: white;
+  padding: 5px;
+}
+
+.product-name {
+  font-family: Roboto;
+  font-size: 24px;
+  font-weight: 500;
+}

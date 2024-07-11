@@ -1,0 +1,77 @@
+.IntroductionPage {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.introduction-page {
+  flex: 1;
+  padding: 50px;
+  background-color: #e9ebeb; /* Màu nền */
+  border-radius: 20px; /* Bo góc */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng đổ */
+  transition: box-shadow 0.3s ease; /* Hiệu ứng chuyển đổi bóng đổ */
+  animation: fadeInUp 0.6s ease;
+  font-family: Roboto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-title {
+  color: #2e8b57; /* Màu xanh lá cây */
+  font-size: 64px; /* Kích thước font chữ */
+  font-family: Roboto;
+}
+
+.section {
+  margin-bottom: 40px;
+}
+
+.section-title {
+  color: #2aa35f; /* Màu xanh lá cây */
+  font-size: 24px; /* Kích thước font chữ */
+  font-weight: 500;
+}
+
+.section-content {
+  color: #594747;
+  font-size: 16px; /* Kích thước font chữ */
+  line-height: 1.6; /* Độ cao dòng */
+}
+
+.product-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 50px;
+  color: #594747; /* Màu xám nhạt */
+}
+
+.footer-text {
+  color: #594747; /* Màu xám đậm */
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section {
+  animation: fadeInUp 0.6s ease;
+}
+.Footer {
+  margin-top: 20px;
+}

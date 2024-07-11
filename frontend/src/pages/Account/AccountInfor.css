@@ -1,0 +1,48 @@
+.form {
+    width: 50%;
+    margin: 15px auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+
+}
+
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.account-form-info input[type="text"],
+.account-form-info input[type="email"],
+.account-form-info input[type="tel"],
+.account-form-info input[type="date"],
+.account-form-info input[type="password"],
+.account-form-info select,
+.account-form-info textarea {
+
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 1px;
+    font-size: 16px;
+}
+
+
+
+button[type="submit"] {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 1px;
+    background-color: black;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+
+    width: 100%;
+}
+
+button[type="submit"]:hover {
+    opacity: .8;
+}

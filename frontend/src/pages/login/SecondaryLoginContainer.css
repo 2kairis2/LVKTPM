@@ -1,0 +1,36 @@
+.SecondaryLoginContainer {
+    background-color: #ffffff;
+    display: grid;
+    grid-template-areas: "secondary primary";
+    grid-template-columns: 50% 50%;
+    
+     
+}
+  
+  .secondary-home {
+    grid-area: primary;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: -100px;
+  }
+
+  .fixed-img img {
+    width: 100%;
+    object-fit: cover;
+  }
+  
+  .secondary-home #home-login-button {
+    padding: 16px 140px;
+    text-transform: uppercase;
+    border: 1px solid #000;
+    background-color: #d9c0ab;
+    margin-top: 80px;
+  }
+  
+  .secondary-home #home-login-button:hover {
+    cursor: pointer;
+    opacity: 0.9;
+  }
+  

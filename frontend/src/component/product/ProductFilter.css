@@ -1,0 +1,257 @@
+.ProductFilter {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  padding-left: 19px;
+}
+.filter-by {
+  color: var(--Sort, #7f6e59);
+  text-align: center;
+  font-family: Roboto;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  border-right: 1px solid #7f6e59;
+  padding-right: 20px;
+}
+.filter-container {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #7f6e59;
+  position: relative;
+  margin-right: 20px;
+}
+.dropdown-menu,
+.dropdown-menu1,
+.dropdown-menu1 li:hover .dropdown-menu1 li:hover {
+  z-index: 2; 
+}
+.reset-all{
+  display: flex;
+  justify-content: end;
+  position: absolute;
+  text-align: center;
+  right: 0;
+  padding-top: 18px;
+}
+.dropdown-menu {
+  width: 100px;
+  border-top: none;
+  list-style-type: none;
+  padding: 0 10px;
+  margin: 0;
+  position: absolute;
+  top: 93%;
+  overflow: hidden; /* Ẩn nội dung vượt quá phần tử cha */
+  max-height: 0; /* Khởi đầu với chiều cao là 0 */
+  opacity: 0; /* Khởi đầu với opacity là 0 */
+  transition: max-height 0.5s ease, opacity 0.5s ease, box-shadow 0.5s ease; /* Thêm hiệu ứng box-shadow */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Thêm hiệu ứng drop shadow */
+}
+
+.dropdown.open .dropdown-menu {
+  background-color: white;
+  max-height: 125px; /* Đặt max-height về giá trị tối đa */
+  opacity: 1; /* Đặt opacity là 1 khi hiển thị */
+  box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.2);
+}
+.dropdown-menu1 {
+  height: 123px;
+  width: 240px;
+
+  border-top: none;
+  list-style-type: none;
+  padding: 0 10px;
+  margin: 0;
+  position: absolute;
+  top: 93%;
+  overflow: hidden; /* Ẩn nội dung vượt quá phần tử cha */
+  max-height: 0; /* Khởi đầu với chiều cao là 0 */
+  opacity: 0; /* Khởi đầu với opacity là 0 */
+  transition: max-height 0.5s ease, opacity 0.5s ease, box-shadow 0.5s ease; /* Thêm hiệu ứng box-shadow */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Thêm hiệu ứng drop shadow */
+}
+
+.dropdown.open .dropdown-menu1 {
+  background-color: white;
+  z-index: 2;
+  max-height: 145px; /* Đặt max-height về giá trị tối đa */
+  opacity: 1; /* Đặt opacity là 1 khi hiển thị */
+  box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.2);
+}
+.dropdown {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 30px;
+}
+.dropdown-menu1 li {
+  padding: 10px;
+  cursor: pointer;
+  font-family: Roboto;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  text-transform: uppercase;
+}
+.dropdown-menu li {
+  padding: 10px;
+  cursor: pointer;
+  font-family: Roboto;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.dropdown-menu li:hover {
+  background-color: #f0f0f0;
+}
+.dropdown-toggle {
+  border: none;
+  color: var(--Sort, #7f6e59);
+  text-align: center;
+  font-family: Robotor;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  background-color: white;
+}
+
+.result-container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  z-index: 1;
+}
+.show-by {
+  color: var(--Sort, #7f6e59);
+  text-align: center;
+  font-family: Roboto;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  margin-right: 13px;
+}
+.selected-product-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  z-index: 1;
+  color: var(--text, #fff);
+  text-align: center;
+  font-family: Roboto;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  width: 125px;
+  border-radius: 30px;
+  background: var(--Text, #000);
+  text-transform: uppercase;
+  width: 140px;
+}
+.clear-button{
+  background-color: #000;
+  color: white;
+  border: none;
+  border-radius: 30px;
+}
+.selected-price-container{
+  justify-content: space-evenly;
+  display: flex;
+  flex-direction: row;
+  z-index: 1;
+  color: var(--text, #fff);
+  text-align: center;
+  font-family: Roboto;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  border-radius: 30px;
+  background: var(--Text, #000);
+  text-transform: uppercase;
+  margin-left: 15px;
+  width: 240px;
+}
+
+.ProductItems {
+  margin-right: 20px;
+  text-align: center; /* Khoảng cách bên phải giữa các hình */
+}
+.ProductReview .title-review {
+  color: var(--Sort, #7f6e59);
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 200;
+  line-height: normal;
+}
+.product-container {
+  display: grid;
+   grid-template-columns: 25% 25% 25% 25%;
+   width: 100%;
+   gap: 10px;
+   margin-bottom: 20px;
+   
+}
+.product-container a{
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+.product-container a:hover{
+  color: #00DC4B;
+  
+}
+.product-image:hover{
+  box-shadow: 0 0 10px rgb(185, 203, 203);
+}
+
+/* Thiết lập khoảng cách giữa các sản phẩm */
+.product-item:not(:nth-child(4n)) {
+  margin-right: 5px;
+}
+
+/* Đảm bảo rằng không có khoảng cách bên phải ở sản phẩm cuối cùng của mỗi hàng */
+.product-item:nth-child(4n) {
+  margin-right: 0;
+  
+}
+.ProductReview .expand-btn {
+  position: relative;
+  left: 46%;
+  padding: 10px 20px;
+  background-color: white;
+  color: #8e7033;
+  text-decoration: underline;
+  border: none;
+  font-family: Roboto;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  cursor: pointer;
+}
+.ProductReview .collapse-btn {
+  position: relative;
+  left: 46%;
+  padding: 10px 20px;
+  background-color: white;
+  color: #8e7033;
+  text-decoration: underline;
+  border: none;
+  font-family: Roboto;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  cursor: pointer;
+}
