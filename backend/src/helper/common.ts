@@ -1,3 +1,5 @@
+import { Document, Model } from 'mongoose';
+
 export function createSlug(str: string) {
     str = str.replace(/[\u0300-\u036f]/g, '');
     str = str.replace(/đ/g, 'd');
@@ -15,4 +17,30 @@ export const convertError = (error: unknown): string => {
         return error.message;
     }
     return 'Internal server error';
+};
+
+export const convertPaginateResponse = async (
+    model: Model<Document & any>,
+    data: any,
+    query: Record<string, any>,
+    page: number,
+    limit: number,
+) => {
+    const total = await model.countDocuments(query);
+
+    return {
+        data: data,
+        meta: {
+            page,
+            limit,
+            total,
+        },
+    };
+};
+
+export const convertDataResponse = (data: any, message: string = 'Successful') => {
+    return {
+        data: data,
+        message,
+    };
 };

@@ -4,6 +4,7 @@ import { IImage } from './image';
 
 export interface IProduct extends CommonProps {
     name: string;
+    slug: string;
     price: number;
     sale: number;
     weight: number;

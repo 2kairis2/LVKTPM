@@ -10,6 +10,8 @@ export interface RequestQuery {
     limit?: number;
     page?: number;
     sort?: string;
+    order?: string;
     includes?: string;
     file?: any;
+    [key: string]: any;
 }
