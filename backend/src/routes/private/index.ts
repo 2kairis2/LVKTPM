@@ -8,6 +8,7 @@ import productRoute from './product.route';
 import productTypeRoute from './productType.route';
 import roleRoute from './role.route';
 import imageRoute from './image.route';
+import supplierRoute from './supplier.route';
 
 const router = express.Router();
 
@@ -19,5 +20,6 @@ router.use('/products', productRoute);
 router.use('/product-types', productTypeRoute);
 router.use('/roles', roleRoute);
 router.use('/images', imageRoute);
+router.use('/suppliers', supplierRoute);
 
 export default router;
