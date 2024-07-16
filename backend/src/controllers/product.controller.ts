@@ -32,7 +32,13 @@ const productController = {
 
             const products = await Product.find(query).skip(skip).limit(limit).populate(includes).sort(sort);
 
-            const paginateData = await convertPaginateResponse(Product, products, query, page, limit);
+            const paginateData = await convertPaginateResponse({
+                model: Product,
+                data: products,
+                query,
+                page,
+                limit,
+            });
 
             return res.status(200).json(paginateData);
         } catch (error) {
@@ -72,13 +78,16 @@ const productController = {
             return res.status(201).json(convertDataResponse(existProduct, 'Cập nhật sản phẩm thành công'));
         } catch (error) {
             console.error(error);
-            return res.status(500).json({ message: 'update product server error' });
+            return res.status(500).json({ message: convertError(error) });
         }
     },
     deleteProduct: async (req: Request, res: Response) => {
         try {
-            await Product.findByIdAndDelete(req.params.id);
-            return res.status(204).json({ message: 'Xóa sản phẩm thành công' });
+            const product = await Product.findByIdAndDelete(req.params.id);
+            if (!product) {
+                return res.status(404).json({ message: 'Không tìm thấy sản phẩm' });
+            }
+            return res.status(200).json(convertDataResponse(product, 'Xóa sản phẩm thành công'));
         } catch (error) {
             console.error(error);
             return res.status(500).json({ message: convertError(error) });

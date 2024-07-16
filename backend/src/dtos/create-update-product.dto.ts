@@ -1,6 +1,6 @@
 import { Transform } from 'class-transformer';
 import { IsArray, IsDate, IsEnum, IsInt, IsNumber, IsPositive, IsString } from 'class-validator';
-import { IsAfterToday } from '../custom';
+import { IsAfterToday } from './custom';
 
 export class CreateUpdateProductDto {
     @IsString()

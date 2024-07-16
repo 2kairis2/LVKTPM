@@ -1,7 +1,7 @@
 import { IsEnum, IsNotEmpty, IsString } from 'class-validator';
 import { IPermission } from '~/types';
 
-export class CreateAndUpdateRoleDto {
+export class CreateUpdateRoleDto {
     @IsString()
     @IsNotEmpty()
     name: string;

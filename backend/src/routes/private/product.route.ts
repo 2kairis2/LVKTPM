@@ -3,7 +3,7 @@ const router = express.Router();
 
 import productController from '~/controllers/product.controller';
 import { validationMiddleware } from '~/middlewares/validation';
-import { CreateUpdateProductDto } from '~/dtos/product';
+import { CreateUpdateProductDto } from '~/dtos';
 import { authentication } from '~/middlewares/guard';
 import { IPermission } from '~/types';
 
