@@ -1,3 +1,5 @@
+type TypeQuery = 'PRODUCT' | 'SUPPLIER' | 'ORDER' | 'USER' | 'IMAGE';
+
 export const createQueries = (query: Record<string, any>, type: TypeQuery = 'PRODUCT') => {
     let filter = {};
     if (query.search && query.search.length > 0) {
@@ -6,6 +8,10 @@ export const createQueries = (query: Record<string, any>, type: TypeQuery = 'PRO
             $text: { $search: query.search },
         };
     }
+    if (query.name) {
+        filter = { ...filter, name: { $regex: query.name || '', $options: 'i' } };
+    }
+
     if (type === 'PRODUCT') {
         if (query.type) {
             filter = { ...filter, type: query.type };
@@ -57,9 +63,6 @@ export const createQueries = (query: Record<string, any>, type: TypeQuery = 'PRO
     }
 
     if (type === 'SUPPLIER') {
-        if (query.name) {
-            filter = { ...filter, name: { $regex: query.name || '', $options: 'i' } };
-        }
         if (query.address) {
             filter = { ...filter, address: { $regex: query.address || '', $options: 'i' } };
         }
@@ -69,6 +72,18 @@ export const createQueries = (query: Record<string, any>, type: TypeQuery = 'PRO
         if (query.email) {
             filter = { ...filter, email: { $regex: query.email || '', $options: 'i' } };
         }
+    }
+
+    if (type === 'IMAGE') {
+        // queries for image
+    }
+
+    if (type === 'ORDER') {
+        // queries for order
+    }
+
+    if (type === 'USER') {
+        // queries for user
     }
 
     return filter;
@@ -91,8 +106,6 @@ export const convertIncludes = (query: Record<string, any>) => {
     }
     return includes;
 };
-
-type TypeQuery = 'PRODUCT' | 'SUPPLIER' | 'CATEGORY' | 'ORDER' | 'USER';
 
 export const getQueriesPaginate = (query: Record<string, any>, type: TypeQuery = 'PRODUCT') => {
     const { sort = 'createdAt', order = 'desc', limit = 10, page = 1, ...rest } = query;

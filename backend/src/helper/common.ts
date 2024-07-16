@@ -19,13 +19,15 @@ export const convertError = (error: unknown): string => {
     return 'Internal server error';
 };
 
-export const convertPaginateResponse = async (
-    model: Model<Document & any>,
-    data: any,
-    query: Record<string, any>,
-    page: number,
-    limit: number,
-) => {
+interface IConvertPaginateResponse {
+    model: Model<Document & any>;
+    data: any;
+    query: Record<string, any>;
+    page: number;
+    limit: number;
+}
+
+export const convertPaginateResponse = async ({ model, data, query, page, limit }: IConvertPaginateResponse) => {
     const total = await model.countDocuments(query);
 
     return {
