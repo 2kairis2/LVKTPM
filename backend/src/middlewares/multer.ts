@@ -6,10 +6,12 @@ const storage = multer.diskStorage({
     },
     filename: (req: any, file: any, cb: any) => {
         const ext = file.originalname.split('.')[1];
-        cb(null, `${file.originalname.split('.')[0]}_${Date.now()}.${ext}`);
+        cb(null, `${file.originalname.split('.')[0]}-${Date.now()}.${ext}`);
     },
 });
 
 const upload = multer({ storage: storage });
 
+export const uploadSingle = upload.single('image');
+export const uploadMultiple = upload.array('images', 5);
 export default upload;

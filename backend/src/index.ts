@@ -15,11 +15,14 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 app.use(bodyParser.json());
 app.use(cookieParser());
+app.use(express.static('public'));
 
 app.use('/api/v1', routes);
-
 app.get('/api/v1', (req: Request, res: Response) => {
     res.send('Express + TypeScript Server');
+});
+app.use((req: Request, res: Response) => {
+    res.status(404).send('404 - Not Found');
 });
 
 app.listen(port, () => {

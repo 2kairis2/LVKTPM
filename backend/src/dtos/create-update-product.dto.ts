@@ -31,7 +31,7 @@ export class CreateUpdateProductDto {
 
     @Transform((data) => Number(data.value))
     @IsEnum([0, 1, 2, 3, 4, 5])
-    feature: number;
+    category: number;
 
     @Transform((data) => Number(data.value))
     @IsInt()

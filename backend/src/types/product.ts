@@ -1,9 +1,9 @@
 import { CommonProps } from './common';
-import { FeatureProduct, TypeProduct } from './enum';
 import { IImage } from './image';
+import { ICategory, IType } from '~/types';
 
 export interface IProduct extends CommonProps {
-    name: string;
+    title: string;
     slug: string;
     price: number;
     sale: number;
@@ -11,9 +11,8 @@ export interface IProduct extends CommonProps {
     desc: string;
     content: string;
     quantity: number;
-    mfg: string;
-    exp: string;
-    type: TypeProduct;
-    feature: FeatureProduct;
+    type: IType;
+    category: ICategory;
     image: Array<IImage>;
+    expired: number;
 }

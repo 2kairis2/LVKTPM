@@ -25,7 +25,6 @@ export async function areUniqueValues<T>(
     }
 
     const existingDocuments = await model.find({ $or: orConditions });
-    console.log('🚀 ~ existingDocuments:', existingDocuments);
 
     const uniqueResults: { [key in keyof T]?: boolean } = {};
 

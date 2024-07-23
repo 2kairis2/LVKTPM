@@ -8,30 +8,21 @@ export const createQueries = (query: Record<string, any>, type: TypeQuery = 'PRO
             $text: { $search: query.search },
         };
     }
-    if (query.name) {
-        filter = { ...filter, name: { $regex: query.name || '', $options: 'i' } };
-    }
 
     if (type === 'PRODUCT') {
-        if (query.type) {
-            filter = { ...filter, type: query.type };
-        }
-        if (query.feature) {
-            filter = { ...filter, feature: query.feature };
+        if (query.title) {
+            filter = { ...filter, title: { $regex: query.title, $options: 'i' } };
         }
         if (query.slug) {
             filter = { ...filter, slug: query.slug };
         }
-        if (query.price) {
-            filter = { ...filter, price: query.price };
-        }
-        if (query.rp) {
-            const range_price = query.rp.split(':');
+        if (query.rs) {
+            const range_sale = query.rs.split(':');
             filter = {
                 ...filter,
-                price: {
-                    $gte: +range_price[0],
-                    $lte: +range_price[1],
+                sale: {
+                    $gte: +range_sale[0],
+                    $lte: +range_sale[1],
                 },
             };
         }
@@ -51,26 +42,17 @@ export const createQueries = (query: Record<string, any>, type: TypeQuery = 'PRO
         if (query.quantity) {
             filter = { ...filter, quantity: query.quantity };
         }
-        if (query.quantityp) {
-            filter = { ...filter, quantityp: query.quantityp };
-        }
-        if (query.exp) {
-            filter = { ...filter, exp: query.exp };
-        }
-        if (query.mfg) {
-            filter = { ...filter, mfg: query.mfg };
-        }
     }
 
     if (type === 'SUPPLIER') {
-        if (query.address) {
-            filter = { ...filter, address: { $regex: query.address || '', $options: 'i' } };
+        if (query.name) {
+            filter = { ...filter, name: { $regex: query.name, $options: 'i' } };
         }
         if (query.phone) {
-            filter = { ...filter, phone: { $regex: query.phone || '', $options: 'i' } };
+            filter = { ...filter, phone: { $regex: query.phone, $options: 'i' } };
         }
         if (query.email) {
-            filter = { ...filter, email: { $regex: query.email || '', $options: 'i' } };
+            filter = { ...filter, email: { $regex: query.email, $options: 'i' } };
         }
     }
 
@@ -99,12 +81,14 @@ export const convertSort = (query: Record<string, any>) => {
     return sort;
 };
 
-export const convertIncludes = (query: Record<string, any>) => {
-    let includes: Array<string> = [];
-    if (query.includes) {
-        includes = query.includes.split(',');
+export const convertIncludes = (includes: null | string | undefined) => {
+    let result: Array<string> = [];
+
+    if (includes) {
+        result = includes.split(',');
     }
-    return includes;
+
+    return result;
 };
 
 export const getQueriesPaginate = (query: Record<string, any>, type: TypeQuery = 'PRODUCT') => {
@@ -115,7 +99,7 @@ export const getQueriesPaginate = (query: Record<string, any>, type: TypeQuery =
         limit: Number(limit),
         page: Number(page),
         skip: (Number(page) - 1) * Number(limit),
-        includes: convertIncludes(query),
+        includes: convertIncludes(query.includes),
         query: createQueries(rest, type),
     };
 };

@@ -1,48 +1,55 @@
 import { NextFunction, Request, Response } from 'express';
 
 import jwt from 'jsonwebtoken';
-import { IPermission, UserToken } from '../types';
-import roleController from '~/controllers/role.controller';
+import { IPermission, UserToken, HttpStatus } from '../types';
+import { handleError } from '~/helper';
+
+const getToken = (req: Request) => {
+    const access_token = req.cookies['access_token'];
+    if (!access_token) return null;
+    const token = access_token.split(' ')[1];
+    const SECRET_KEY = process.env.ACCESS_TOKEN_SECRET || 'secret';
+    const tokenDecode = jwt.verify(token, SECRET_KEY) as UserToken | null;
+    return tokenDecode;
+};
 
 export const authorization = async (req: Request, res: Response, next: NextFunction) => {
-    const cookieToken = req.cookies['access_token'];
-
-    if (!cookieToken) return res.status(401).json({ message: 'Unauthorized' });
-
-    const token = cookieToken.split(' ')[1];
-
-    if (!token) return res.status(401).json({ message: 'Unauthorized' });
-
-    const SECRET_KEY = process.env.ACCESS_TOKEN_SECRET || 'secret';
-
-    const tokenDecode = jwt.verify(token, SECRET_KEY) as UserToken | null;
-    if (!tokenDecode) {
-        return res.status(403).json({ message: 'Forbidden' });
+    const token = getToken(req);
+    if (!token) {
+        return handleError({ message: 'Chưa xác thực', status: HttpStatus.UNAUTHORIZED }, res);
     }
-    req.user = tokenDecode;
+    req.user = token;
     next();
 };
 
-export const authentication = (permission: IPermission) => async (req: Request, res: Response, next: NextFunction) => {
-    const { role } = req.user;
+export const validatePermission =
+    (permission: IPermission) => async (req: Request, res: Response, next: NextFunction) => {
+        const token = getToken(req);
+        if (!token) {
+            return handleError({ message: 'Chưa xác thực', status: HttpStatus.UNAUTHORIZED }, res);
+        }
 
-    if (req.params.id === req.user._id) {
+        const { role } = token;
+        req.user = token;
+
+        // Allow user to access their own data
+        if (req.params.id === token._id) {
+            return next();
+        }
+
+        // Check if user has permission
+        if (!role) {
+            return handleError({ message: 'Không có quyền truy cập', status: HttpStatus.FORBIDDEN }, res);
+        }
+
+        // Allow admin to access all data
+        if (role.name === 'admin') {
+            return next();
+        }
+
+        if (!role.permissions.includes(permission)) {
+            return handleError({ message: 'Không có quyền truy cập', status: HttpStatus.FORBIDDEN }, res);
+        }
+
         return next();
-    }
-
-    if (!role) {
-        return res.status(403).json({ message: 'Forbidden' });
-    }
-
-    if (role.name === 'admin') {
-        return next();
-    }
-
-    const rolePermissions = await roleController.findById(role._id);
-
-    if (!rolePermissions?.permissions?.includes(permission)) {
-        return res.status(403).json({ message: 'Forbidden' });
-    }
-
-    return next();
-};
+    };
