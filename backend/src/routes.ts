@@ -10,6 +10,7 @@ import imageRoutes from '~/modules/image/image.routes';
 import categoryRoutes from '~/modules/category/category.routes';
 import typeRoutes from '~/modules/type/type.routes';
 import inventoryReceiptRoutes from '~/modules/inventory-receipt/inventory-receipt.routes';
+import cartRoutes from '~/modules/cart/cart.routes';
 
 const router = Router();
 
@@ -23,6 +24,7 @@ router.use('/images', imageRoutes);
 router.use('/categories', categoryRoutes);
 router.use('/types', typeRoutes);
 router.use('/inventory-receipts', inventoryReceiptRoutes);
+router.use('/cart', cartRoutes);
 
 router.get('/docs', (req, res) => {
     res.send('Docs');
