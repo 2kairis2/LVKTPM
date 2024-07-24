@@ -11,6 +11,7 @@ import categoryRoutes from '~/modules/category/category.routes';
 import typeRoutes from '~/modules/type/type.routes';
 import inventoryReceiptRoutes from '~/modules/inventory-receipt/inventory-receipt.routes';
 import cartRoutes from '~/modules/cart/cart.routes';
+import orderRoutes from '~/modules/order/order.routes';
 
 const router = Router();
 
@@ -25,6 +26,7 @@ router.use('/categories', categoryRoutes);
 router.use('/types', typeRoutes);
 router.use('/inventory-receipts', inventoryReceiptRoutes);
 router.use('/cart', cartRoutes);
+router.use('/orders', orderRoutes);
 
 router.get('/docs', (req, res) => {
     res.send('Docs');

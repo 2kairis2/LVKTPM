@@ -1,5 +1,10 @@
 /* eslint-disable no-unused-vars */
 
+export enum PaymentMethod {
+    COD = 0,
+    ONLINE = 1,
+}
+
 export enum StatusInventoryReceipt {
     PENDING = 0,
     DONE = 1,
@@ -7,7 +12,9 @@ export enum StatusInventoryReceipt {
 
 export enum StatusOrder {
     PENDING = 0,
-    DONE = 1,
+    DELIVERING = 1,
+    DONE = 2,
+    FAILED = 3,
 }
 
 export enum StatusUser {

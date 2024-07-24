@@ -10,3 +10,4 @@ export * from './category';
 export * from './inventory-receipt';
 export * from './product-detail';
 export * from './product';
+export * from './order';
