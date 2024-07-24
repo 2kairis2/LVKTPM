@@ -12,6 +12,24 @@ export function validateDto(type: any): RequestHandler {
                         if (error.constraints) {
                             return Object.values(error.constraints);
                         }
+                        if (error.children) {
+                            return error.children
+                                .map((child) => {
+                                    if (child.constraints) {
+                                        return Object.values(child.constraints);
+                                    }
+                                    if (child.children) {
+                                        return child.children
+                                            .map((subChild) => {
+                                                if (subChild.constraints) {
+                                                    return Object.values(subChild.constraints);
+                                                }
+                                            })
+                                            .join(', ');
+                                    }
+                                })
+                                .join(', ');
+                        }
                     })
                     .join(', ');
                 res.status(400).json({ message });

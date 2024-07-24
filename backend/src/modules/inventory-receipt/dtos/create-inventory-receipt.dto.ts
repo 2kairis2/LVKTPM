@@ -1,3 +1,4 @@
+import { Type } from 'class-transformer';
 import {
     ArrayNotEmpty,
     IsArray,
@@ -20,6 +21,7 @@ export class CreateInventoryReceiptDto {
     @IsArray()
     @ArrayNotEmpty()
     @ValidateNested({ each: true })
+    @Type(() => ItemInventoryDto)
     products: Array<ItemInventoryDto>;
 
     @IsNotEmpty()
