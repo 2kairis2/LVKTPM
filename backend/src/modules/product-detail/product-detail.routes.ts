@@ -25,10 +25,5 @@ router.put(
     validatePermission(IPermission.UPDATE_PRODUCT_DETAIL),
     productDetailController.updateProductDetail,
 );
-router.delete(
-    '/:id',
-    validatePermission(IPermission.DELETE_PRODUCT_DETAIL),
-    productDetailController.deleteProductDetail,
-);
 
 export default router;

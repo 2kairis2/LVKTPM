@@ -7,7 +7,7 @@ export function serviceTemplate(moduleName: string) {
 
     return `import ${nameParsedPascal} from './${nameParsedKebab}.model';
         import { CustomError } from '~/helper';
-        import { HttpStatus } from '~/types';
+        import { HttpStatus, StringOrObjectId } from '~/types';
 
         const ${nameParsedCamel}Service = {    
             create${nameParsedPascal}: async (data: any) => {
@@ -38,7 +38,7 @@ export function serviceTemplate(moduleName: string) {
                 return ${nameParsedCamel}s;
             },
 
-            get${nameParsedPascal}ById: async (id: string, includes: string | Array<string> = '') => {
+            get${nameParsedPascal}ById: async (id: StringOrObjectId, includes: string | Array<string> = '') => {
                 const ${nameParsedCamel} = await ${parsePascalCase(moduleName)}.findById(id).populate(includes);
 
                 if (!${nameParsedCamel}) {
@@ -48,7 +48,7 @@ export function serviceTemplate(moduleName: string) {
                 return ${nameParsedCamel};
             },
 
-            update${nameParsedPascal}: async (id: string, data: any) => {
+            update${nameParsedPascal}: async (id: StringOrObjectId, data: any) => {
                 const ${nameParsedCamel} = await ${nameParsedPascal}.findByIdAndUpdate(id, data, {
                     new: true,
                 });
@@ -60,7 +60,7 @@ export function serviceTemplate(moduleName: string) {
                 return ${nameParsedCamel};
             },
             
-            delete${nameParsedPascal}: async (id: string) => {
+            delete${nameParsedPascal}: async (id: StringOrObjectId) => {
                 const ${nameParsedCamel} = await ${nameParsedPascal}.findByIdAndDelete(id);
 
                 if (!${nameParsedCamel}) {

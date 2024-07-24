@@ -9,6 +9,7 @@ import supplierRoutes from '~/modules/supplier/supplier.routes';
 import imageRoutes from '~/modules/image/image.routes';
 import categoryRoutes from '~/modules/category/category.routes';
 import typeRoutes from '~/modules/type/type.routes';
+import inventoryReceiptRoutes from '~/modules/inventory-receipt/inventory-receipt.routes';
 
 const router = Router();
 
@@ -16,11 +17,12 @@ router.use('/auth', authRoutes);
 router.use('/roles', rolesRoutes);
 router.use('/users', userRoutes);
 router.use('/products', productRoutes);
-router.use('/product-detail', productDetailRoutes);
+router.use('/product-details', productDetailRoutes);
 router.use('/suppliers', supplierRoutes);
 router.use('/images', imageRoutes);
 router.use('/categories', categoryRoutes);
 router.use('/types', typeRoutes);
+router.use('/inventory-receipts', inventoryReceiptRoutes);
 
 router.get('/docs', (req, res) => {
     res.send('Docs');

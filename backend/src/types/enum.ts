@@ -5,24 +5,6 @@ export enum StatusInventoryReceipt {
     DONE = 1,
 }
 
-// export enum TypeProduct {
-//     HAT_GIONG = 0,
-//     RAU_CU = 1,
-//     CAY_CANH = 2,
-//     PHAN_BON = 3,
-//     THUOC_TRU_SAU = 4,
-//     DUNG_CU_THUY_CANH = 5,
-// }
-
-// export enum CategoriesProduct {
-//     BOT = 0,
-//     VIEN = 1,
-//     NUOC = 2,
-//     CAY = 3,
-//     CU = 4,
-//     LONG = 5,
-// }
-
 export enum StatusOrder {
     PENDING = 0,
     DONE = 1,
@@ -67,29 +49,30 @@ export enum IPermission {
     CREATE_INVENTORY_RECEIPT = 18,
     READ_INVENTORY_RECEIPT = 19,
     UPDATE_INVENTORY_RECEIPT = 20,
+    DELETE_INVENTORY_RECEIPT = 21,
 
-    CREATE_SUPPLIER = 21,
-    READ_SUPPLIER = 22,
-    UPDATE_SUPPLIER = 23,
-    DELETE_SUPPLIER = 24,
+    CREATE_SUPPLIER = 22,
+    READ_SUPPLIER = 23,
+    UPDATE_SUPPLIER = 24,
+    DELETE_SUPPLIER = 25,
 
-    CREATE_ROLE = 25,
-    READ_ROLE = 26,
-    UPDATE_ROLE = 27,
-    DELETE_ROLE = 28,
+    CREATE_ROLE = 26,
+    READ_ROLE = 27,
+    UPDATE_ROLE = 28,
+    DELETE_ROLE = 29,
 
-    CREATE_IMAGE = 29,
-    READ_IMAGE = 30,
-    UPDATE_IMAGE = 31,
-    DELETE_IMAGE = 32,
+    CREATE_IMAGE = 30,
+    READ_IMAGE = 31,
+    UPDATE_IMAGE = 32,
+    DELETE_IMAGE = 33,
 
-    CREATE_PRODUCT_DETAIL = 33,
-    READ_PRODUCT_DETAIL = 34,
-    UPDATE_PRODUCT_DETAIL = 35,
-    DELETE_PRODUCT_DETAIL = 36,
+    CREATE_PRODUCT_DETAIL = 34,
+    READ_PRODUCT_DETAIL = 35,
+    UPDATE_PRODUCT_DETAIL = 36,
+    DELETE_PRODUCT_DETAIL = 37,
 
-    CREATE_CATEGORY = 37,
-    READ_CATEGORY = 38,
-    UPDATE_CATEGORY = 39,
-    DELETE_CATEGORY = 40,
+    CREATE_CATEGORY = 38,
+    READ_CATEGORY = 39,
+    UPDATE_CATEGORY = 40,
+    DELETE_CATEGORY = 41,
 }

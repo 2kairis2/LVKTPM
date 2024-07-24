@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs';
 
 import { CustomError } from '~/helper';
-import { HttpStatus } from '~/types';
+import { HttpStatus, StringOrObjectId } from '~/types';
 import User from './user.model';
 
 const userService = {
@@ -35,11 +35,11 @@ const userService = {
 
         return users;
     },
-    getUserById: async (id: string, includes: string | Array<string> = '') => {
+    getUserById: async (id: StringOrObjectId, includes: string | Array<string> = '') => {
         const user = await User.findById(id).populate(includes);
         return user;
     },
-    updateUser: async (id: string, data: any) => {
+    updateUser: async (id: StringOrObjectId, data: any) => {
         const user = await User.findByIdAndUpdate(id, data, {
             new: true,
         });

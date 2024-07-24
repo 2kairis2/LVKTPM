@@ -6,6 +6,11 @@ const productDetailSchema = new mongoose.Schema({
         ref: 'Product',
         required: true,
     },
+    receipt: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'InventoryReceipt',
+        required: true,
+    },
     sold: {
         type: Boolean,
         required: true,
@@ -17,6 +22,14 @@ const productDetailSchema = new mongoose.Schema({
     sale: {
         type: Number,
         min: 0,
+    },
+    producedAt: {
+        type: Date,
+        required: true,
+    },
+    expiredAt: {
+        type: Date,
+        required: true,
     },
 });
 

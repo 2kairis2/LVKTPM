@@ -7,3 +7,6 @@ export * from './role';
 export * from './http-status';
 export * from './type';
 export * from './category';
+export * from './inventory-receipt';
+export * from './product-detail';
+export * from './product';

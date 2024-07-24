@@ -1,5 +1,7 @@
-export interface CommonProps {
-    _id: string;
+import mongoose from 'mongoose';
+
+export interface BaseProps {
+    _id: StringOrObjectId;
     createdAt: string;
     updatedAt: string;
 }
@@ -15,3 +17,5 @@ export interface RequestQuery {
     file?: any;
     [key: string]: any;
 }
+
+export type StringOrObjectId = string | mongoose.Types.ObjectId;

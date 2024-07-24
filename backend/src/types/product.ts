@@ -1,8 +1,7 @@
-import { CommonProps } from './common';
 import { IImage } from './image';
-import { ICategory, IType } from '~/types';
+import { ICategory, IType, BaseProps } from '~/types';
 
-export interface IProduct extends CommonProps {
+export interface IProduct extends BaseProps {
     title: string;
     slug: string;
     price: number;

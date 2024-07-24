@@ -1,6 +1,6 @@
 import { areUniqueValues, CustomError } from '~/helper';
 import Product from './product.model';
-import { HttpStatus } from '~/types';
+import { HttpStatus, StringOrObjectId } from '~/types';
 import { IProduct } from '~/types/product';
 
 const productService = {
@@ -46,7 +46,7 @@ const productService = {
         return products;
     },
 
-    getProductById: async (id: string, includes: string | Array<string>) => {
+    getProductById: async (id: StringOrObjectId, includes: string | Array<string> = '') => {
         const product = await Product.findById(id).populate(includes);
 
         if (!product) {
@@ -56,7 +56,7 @@ const productService = {
         return product;
     },
 
-    updateProduct: async (id: string, data: any) => {
+    updateProduct: async (id: StringOrObjectId, data: any) => {
         const product = await Product.findByIdAndUpdate(id, data, {
             new: true,
         });
@@ -68,7 +68,7 @@ const productService = {
         return product;
     },
 
-    deleteProduct: async (id: string) => {
+    deleteProduct: async (id: StringOrObjectId) => {
         const product = await Product.findByIdAndDelete(id);
 
         if (!product) {

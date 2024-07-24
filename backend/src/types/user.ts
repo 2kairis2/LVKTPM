@@ -1,9 +1,6 @@
-import { IImage } from './image';
-import { IRole } from './role';
-import { CommonProps } from './common';
+import { BaseProps, IRole, IImage, StringOrObjectId } from '~/types';
 
-export interface IUser extends CommonProps {
-    _id: string;
+export interface IUser extends BaseProps {
     email: string;
     role: IRole;
     fullname: string;
@@ -11,7 +8,7 @@ export interface IUser extends CommonProps {
     address: string;
     status: number;
     password: string;
-    avatar: string | IImage;
+    avatar: StringOrObjectId | IImage;
 }
 
 export type UserToken = Pick<IUser, '_id' | 'email' | 'role'>;

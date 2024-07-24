@@ -1,4 +1,4 @@
-type TypeQuery = 'PRODUCT' | 'SUPPLIER' | 'ORDER' | 'USER' | 'IMAGE';
+type TypeQuery = 'PRODUCT' | 'SUPPLIER' | 'ORDER' | 'USER' | 'IMAGE' | 'INVENTORY_RECEIPT' | 'PRODUCT_DETAIL' | 'CART';
 
 export const createQueries = (query: Record<string, any>, type: TypeQuery = 'PRODUCT') => {
     let filter = {};
@@ -6,6 +6,20 @@ export const createQueries = (query: Record<string, any>, type: TypeQuery = 'PRO
         filter = {
             ...filter,
             $text: { $search: query.search },
+        };
+    }
+    if (query.status) {
+        filter = { ...filter, status: query.status };
+    }
+    // range createdAt
+    if (query.rc) {
+        const range_date = query.rd.split(':');
+        filter = {
+            ...filter,
+            createdAt: {
+                $gte: new Date(range_date[0]),
+                $lte: new Date(range_date[1]),
+            },
         };
     }
 
@@ -66,6 +80,63 @@ export const createQueries = (query: Record<string, any>, type: TypeQuery = 'PRO
 
     if (type === 'USER') {
         // queries for user
+    }
+
+    if (type === 'INVENTORY_RECEIPT') {
+        // range importedAt
+        if (query.ri) {
+            const range_imported = query.ri.split(':');
+            filter = {
+                ...filter,
+                importedAt: {
+                    $gte: new Date(range_imported[0]),
+                    $lte: new Date(range_imported[1]),
+                },
+            };
+        }
+    }
+
+    if (type === 'PRODUCT_DETAIL') {
+        if (query.product) {
+            filter = { ...filter, product: query.product };
+        }
+        if (query.receipt) {
+            filter = { ...filter, receipt: query.receipt };
+        }
+        if (query.sold) {
+            filter = { ...filter, sold: query.sold };
+        }
+        if (query.soldAt) {
+            filter = { ...filter, status: query.status };
+        }
+        if (query.rsa) {
+            const range_soldAt = query.rsa.split(':');
+            filter = {
+                ...filter,
+                soldAt: {
+                    $gte: new Date(range_soldAt[0]),
+                    $lte: new Date(range_soldAt[1]),
+                },
+            };
+        }
+        if (query.producedAt) {
+            filter = { ...filter, producedAt: query.producedAt };
+        }
+        if (query.expiredAt) {
+            filter = { ...filter, expiredAt: query.expiredAt };
+        }
+        if (query.ne && query.ne === 'true') {
+            filter = {
+                ...filter,
+                expiredAt: {
+                    $lte: new Date(new Date().setDate(new Date().getDate() + 14)),
+                    $gte: new Date(),
+                },
+            };
+        }
+        if (query.isExpired && query.isExpired === 'true') {
+            filter = { ...filter, expiredAt: { $lte: new Date() } };
+        }
     }
 
     return filter;
