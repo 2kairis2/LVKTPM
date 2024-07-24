@@ -79,12 +79,12 @@ const cartService = {
         cart.products.splice(index, 1);
         return cart.save();
     },
-    emptyCart: async (userId: StringOrObjectId) => {
+    deleteManyProduct: async (userId: StringOrObjectId, productIds: Array<StringOrObjectId>) => {
         const cart = await Cart.findOne({ user: userId });
         if (!cart) {
             throw new CustomError('Cart không tìm thấy', HttpStatus.NOT_FOUND);
         }
-        cart.products.splice(0, cart.products.length);
+        cart.products = cart.products.filter((product) => !productIds.includes(product.product.toString())) as any;
         return cart.save();
     },
 };

@@ -1,5 +1,6 @@
 import Order from './order.model';
 import { CustomError } from '~/helper';
+import cartService from '~/modules/cart/cart.service';
 import productDetailService from '~/modules/product-detail/product-detail.service';
 import { HttpStatus, StringOrObjectId, IOrder, IProduct, StatusOrder } from '~/types';
 
@@ -90,6 +91,19 @@ const orderService = {
                 productDetail.sale = 0;
                 await productDetail.save();
             }
+        }
+
+        if (data.status === StatusOrder.DONE) {
+            let productIds = [];
+            for (const item of order.items) {
+                const productDetail = await productDetailService.getProductDetailById(item.product);
+                if (!productDetail) {
+                    continue;
+                }
+                productIds.push(productDetail.product);
+            }
+            productIds = [...new Set(productIds)];
+            await cartService.deleteManyProduct(order.user, productIds);
         }
 
         Object.assign(order, data);

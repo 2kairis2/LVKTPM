@@ -1,4 +1,4 @@
-import { IProductDetail } from '~/types';
+import { IProductDetail, StringOrObjectId } from '~/types';
 import ProductDetail from './product-detail.model';
 import productService from '~/modules/product/product.service';
 
@@ -40,19 +40,19 @@ const productDetailService = {
         return productDetails;
     },
 
-    getProductDetailById: async (id: string, includes: string | Array<string>) => {
+    getProductDetailById: async (id: StringOrObjectId, includes: string | Array<string> = '') => {
         const productDetail = await ProductDetail.findById(id).populate(includes);
         return productDetail;
     },
 
-    updateProductDetail: async (id: string, data: any) => {
+    updateProductDetail: async (id: StringOrObjectId, data: any) => {
         const productDetail = await ProductDetail.findByIdAndUpdate(id, data, {
             new: true,
         });
         return productDetail;
     },
 
-    deleteProductDetail: async (id: string) => {
+    deleteProductDetail: async (id: StringOrObjectId) => {
         const productDetail = await ProductDetail.findByIdAndDelete(id);
         return productDetail;
     },

@@ -1,7 +1,7 @@
-import { IsNotEmpty } from 'class-validator';
-import { CreateProductDetailDto } from './create-product-detail.dto';
+import { IsNotEmpty, IsString } from 'class-validator';
 
-export class UpdateProductDetailDto extends CreateProductDetailDto {
+export class UpdateProductDetailDto {
     @IsNotEmpty()
-    id: string;
+    @IsString()
+    note: string;
 }

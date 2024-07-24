@@ -11,6 +11,10 @@ const productDetailSchema = new mongoose.Schema({
         ref: 'InventoryReceipt',
         required: true,
     },
+    note: {
+        type: String,
+        default: '',
+    },
     sold: {
         type: Boolean,
         required: true,
