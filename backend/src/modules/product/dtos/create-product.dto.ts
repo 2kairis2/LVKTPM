@@ -54,4 +54,8 @@ export class CreateProductDto {
     @IsOptional()
     @IsNumber()
     weight: number;
+
+    @IsOptional()
+    @IsMongoId()
+    discount: string;
 }

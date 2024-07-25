@@ -5,6 +5,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import mongoose from 'mongoose';
 import 'reflect-metadata';
+import './cron';
 
 import routes from './routes';
 

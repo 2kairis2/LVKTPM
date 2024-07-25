@@ -35,6 +35,18 @@ export enum EGender {
     OTHER = 2,
 }
 
+export enum EStatusDiscount {
+    NOT_ACTIVE = 0,
+    INACTIVE = 1,
+    EXPIRED = 2,
+    CANCEL = 3,
+}
+
+export enum ETypeDiscount {
+    PERCENT = 0,
+    MONEY = 1,
+}
+
 export enum IPermission {
     CREATE_PRODUCT = 0,
     READ_PRODUCT = 1,

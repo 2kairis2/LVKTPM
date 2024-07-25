@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import mongooseAutoPopulate from 'mongoose-autopopulate';
+import { StatusProduct } from '~/types';
 
 const productSchema = new mongoose.Schema({
     title: {
@@ -41,6 +42,10 @@ const productSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Type',
     },
+    discount: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Discount',
+    },
     /**
      * 0: Draft
      * 1: Available
@@ -49,8 +54,8 @@ const productSchema = new mongoose.Schema({
      */
     status: {
         type: Number,
-        enum: [0, 1, 2, 3],
-        default: 0,
+        enum: StatusProduct,
+        default: StatusProduct.DRAFT,
     },
     weight: {
         type: Number,

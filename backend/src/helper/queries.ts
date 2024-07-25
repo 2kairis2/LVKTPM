@@ -1,4 +1,13 @@
-type TypeQuery = 'PRODUCT' | 'SUPPLIER' | 'ORDER' | 'USER' | 'IMAGE' | 'INVENTORY_RECEIPT' | 'PRODUCT_DETAIL' | 'CART';
+type TypeQuery =
+    | 'PRODUCT'
+    | 'SUPPLIER'
+    | 'ORDER'
+    | 'USER'
+    | 'IMAGE'
+    | 'INVENTORY_RECEIPT'
+    | 'PRODUCT_DETAIL'
+    | 'CART'
+    | 'DISCOUNT';
 
 export const createQueries = (query: Record<string, any>, type: TypeQuery = 'PRODUCT') => {
     let filter = {};
@@ -7,9 +16,6 @@ export const createQueries = (query: Record<string, any>, type: TypeQuery = 'PRO
             ...filter,
             $text: { $search: query.search },
         };
-    }
-    if (query.status) {
-        filter = { ...filter, status: query.status };
     }
     // range createdAt
     if (query.rc) {
@@ -52,6 +58,9 @@ export const createQueries = (query: Record<string, any>, type: TypeQuery = 'PRO
                     $lte: range_weight[1],
                 },
             };
+        }
+        if (query.status) {
+            filter = { ...filter, status: query.status };
         }
         if (query.quantity) {
             filter = { ...filter, quantity: query.quantity };
@@ -115,6 +124,9 @@ export const createQueries = (query: Record<string, any>, type: TypeQuery = 'PRO
         if (query.phone) {
             filter = { ...filter, phone: { $regex: query.phone, $options: 'i' } };
         }
+        if (query.status) {
+            filter = { ...filter, status: query.status };
+        }
     }
 
     if (type === 'INVENTORY_RECEIPT') {
@@ -128,6 +140,9 @@ export const createQueries = (query: Record<string, any>, type: TypeQuery = 'PRO
                     $lte: new Date(range_imported[1]),
                 },
             };
+        }
+        if (query.status) {
+            filter = { ...filter, status: query.status };
         }
     }
 
@@ -173,6 +188,18 @@ export const createQueries = (query: Record<string, any>, type: TypeQuery = 'PRO
         }
         if (query.isExpired && query.isExpired === 'true') {
             filter = { ...filter, expiredAt: { $lte: new Date() } };
+        }
+    }
+
+    if (type === 'DISCOUNT') {
+        if (query.title) {
+            filter = { ...filter, title: { $regex: query.title, $options: 'i' } };
+        }
+        if (query.type) {
+            filter = { ...filter, type: query.type };
+        }
+        if (query.status) {
+            filter = { ...filter, status: query.status };
         }
     }
 

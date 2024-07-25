@@ -9,12 +9,9 @@ export function IsAfterToday(validationOptions?: ValidationOptions) {
             options: validationOptions,
             validator: {
                 validate(value: any) {
-                    if (value instanceof Date) {
-                        const today = new Date();
-                        today.setHours(0, 0, 0, 0); // Set to the start of today
-                        return value > today;
-                    }
-                    return false;
+                    const today = new Date();
+                    today.setHours(0, 0, 0, 0); // Set to the start of today
+                    return new Date(value) > today;
                 },
                 defaultMessage(args: ValidationArguments) {
                     return `${args.property} must be a date after today`;

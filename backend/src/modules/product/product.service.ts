@@ -1,7 +1,7 @@
 import { areUniqueValues, CustomError } from '~/helper';
 import Product from './product.model';
-import { HttpStatus, StringOrObjectId } from '~/types';
-import { IProduct } from '~/types/product';
+import { HttpStatus, StringOrObjectId, IProduct, IDiscount, ETypeDiscount, EStatusDiscount } from '~/types';
+import discountService from '~/modules/discount/discount.service';
 
 const productService = {
     createProduct: async (data: IProduct) => {
@@ -45,7 +45,6 @@ const productService = {
 
         return products;
     },
-
     getProductById: async (id: StringOrObjectId, includes: string | Array<string> = '') => {
         const product = await Product.findById(id).populate(includes);
 
@@ -55,19 +54,52 @@ const productService = {
 
         return product;
     },
-
     updateProduct: async (id: StringOrObjectId, data: any) => {
-        const product = await Product.findByIdAndUpdate(id, data, {
-            new: true,
-        });
+        const product = await Product.findById(id);
 
         if (!product) {
             throw new CustomError('Sản phẩm không tồn tại', HttpStatus.NOT_FOUND);
         }
 
-        return product;
-    },
+        if (data.discount) {
+            const discount = await discountService.getDiscountById(data.discount);
 
+            if (!discount) {
+                throw new CustomError('Mã giảm giá không tồn tại', HttpStatus.NOT_FOUND);
+            }
+
+            if (discount.status === EStatusDiscount.EXPIRED || discount.status === EStatusDiscount.CANCEL) {
+                throw new CustomError('Mã giảm giá đã hết hạn hoặc bị huỷ', HttpStatus.BAD_REQUEST);
+            }
+
+            if (discount.status === EStatusDiscount.INACTIVE) {
+                product.sale = calculateSale(product, discount);
+            }
+        } else {
+            product.sale = product.price;
+            product.discount = null;
+        }
+
+        product.set(data);
+
+        return product.save();
+    },
+    asyncPriceProduct: async (discounts: Array<IDiscount>, type: 'ACTIVE' | 'REMOVE' = 'ACTIVE') => {
+        for (const discount of discounts) {
+            const products = await Product.find({ discount: discount._id });
+
+            for (const product of products) {
+                if (type === 'ACTIVE') {
+                    product.sale = calculateSale(product, discount);
+                } else {
+                    product.sale = product.price;
+                    product.discount = null;
+                }
+
+                await product.save();
+            }
+        }
+    },
     deleteProduct: async (id: StringOrObjectId) => {
         const product = await Product.findByIdAndDelete(id);
 
@@ -78,5 +110,13 @@ const productService = {
         return product;
     },
 };
+
+function calculateSale(product: IProduct, discount: IDiscount) {
+    if (discount.type === ETypeDiscount.PERCENT) {
+        return product.price - (product.price * discount.value) / 100;
+    }
+    const price = product.price - discount.value;
+    return price > 0 ? price : 0;
+}
 
 export default productService;

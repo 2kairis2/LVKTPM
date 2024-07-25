@@ -13,6 +13,7 @@ import inventoryReceiptRoutes from '~/modules/inventory-receipt/inventory-receip
 import cartRoutes from '~/modules/cart/cart.routes';
 import orderRoutes from '~/modules/order/order.routes';
 import paymentRoutes from '~/modules/payment/payment.routes';
+import discountRoutes from '~/modules/discount/discount.routes';
 
 const router = Router();
 
@@ -29,6 +30,7 @@ router.use('/inventory-receipts', inventoryReceiptRoutes);
 router.use('/cart', cartRoutes);
 router.use('/orders', orderRoutes);
 router.use('/payment', paymentRoutes);
+router.use('/discounts', discountRoutes);
 
 router.get('/docs', (req, res) => {
     res.send('Docs');
