@@ -4,6 +4,7 @@ import {
     IsArray,
     IsDateString,
     IsEnum,
+    IsMongoId,
     IsNotEmpty,
     IsNumber,
     IsOptional,
@@ -25,7 +26,7 @@ export class CreateInventoryReceiptDto {
     products: Array<ItemInventoryDto>;
 
     @IsNotEmpty()
-    @IsString()
+    @IsMongoId()
     supplier: string;
 
     @IsNotEmpty()
@@ -46,7 +47,7 @@ export class CreateInventoryReceiptDto {
 
 class ItemInventoryDto {
     @IsNotEmpty()
-    @IsString()
+    @IsMongoId()
     product: string;
 
     @IsNotEmpty()

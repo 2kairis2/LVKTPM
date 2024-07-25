@@ -1,4 +1,15 @@
-import { IsDateString, IsNotEmpty, IsNumber, IsOptional, IsPositive, IsString } from 'class-validator';
+import { Type } from 'class-transformer';
+import {
+    ArrayNotEmpty,
+    IsDateString,
+    IsMongoId,
+    IsNotEmpty,
+    IsNumber,
+    IsOptional,
+    IsPositive,
+    IsString,
+    ValidateNested,
+} from 'class-validator';
 
 export class CreateProductDetailDto {
     @IsOptional()
@@ -15,13 +26,23 @@ export class CreateProductDetailDto {
     @IsPositive()
     total_quantity: number;
 
-    @IsNotEmpty()
-    products: Array<{
-        product: string;
-        quantity: number;
-    }>;
+    @ArrayNotEmpty()
+    @ValidateNested({ each: true })
+    @Type(() => Item)
+    products: Array<Item>;
 
     @IsNotEmpty()
     @IsDateString()
     producedAt: Date;
+}
+
+class Item {
+    @IsNotEmpty()
+    @IsMongoId()
+    product: string;
+
+    @IsNotEmpty()
+    @IsNumber()
+    @IsPositive()
+    quantity: number;
 }

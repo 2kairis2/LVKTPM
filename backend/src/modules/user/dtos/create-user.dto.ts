@@ -1,3 +1,1 @@
-export class CreateUserDto {
-        // Add your properties here
-    }
+export class CreateUserDto {}

@@ -1,10 +1,19 @@
 import { Type } from 'class-transformer';
-import { ArrayNotEmpty, IsArray, IsEnum, IsNotEmpty, IsOptional, IsString, ValidateNested } from 'class-validator';
+import {
+    ArrayNotEmpty,
+    IsArray,
+    IsEnum,
+    IsMongoId,
+    IsNotEmpty,
+    IsOptional,
+    IsString,
+    ValidateNested,
+} from 'class-validator';
 import { PaymentMethod } from '~/types';
 
 class Item {
     @IsNotEmpty()
-    @IsString()
+    @IsMongoId()
     product: string;
 }
 

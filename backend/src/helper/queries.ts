@@ -71,15 +71,44 @@ export const createQueries = (query: Record<string, any>, type: TypeQuery = 'PRO
     }
 
     if (type === 'IMAGE') {
-        // queries for image
+        if (query.name) {
+            filter = { ...filter, name: { $regex: query.name, $option: 'i' } };
+        }
     }
 
     if (type === 'ORDER') {
-        // queries for order
+        if (query.user) {
+            filter = { ...filter, user: query.user };
+        }
+        if (query.status) {
+            filter = { ...filter, status: query.status };
+        }
+        if (query.payment_method) {
+            filter = { ...filter, payment_method: query.payment_method };
+        }
+        if (query.paid) {
+            filter = { ...filter, paid: query.paid };
+        }
+        if (query.deliveredAt) {
+            filter = { ...filter, deliveredAt: query.deliveredAt };
+        }
+        // range deliveredAt
+        if (query.rda) {
+            const range_deliveredAt = query.rda.split(':');
+            filter = {
+                ...filter,
+                deliveredAt: {
+                    $gte: new Date(range_deliveredAt[0]),
+                    $lte: new Date(range_deliveredAt[1]),
+                },
+            };
+        }
     }
 
     if (type === 'USER') {
-        // queries for user
+        if (query.fullname) {
+            filter = { ...filter, fullname: { $regex: query.fullname, $options: 'i' } };
+        }
     }
 
     if (type === 'INVENTORY_RECEIPT') {
@@ -109,6 +138,7 @@ export const createQueries = (query: Record<string, any>, type: TypeQuery = 'PRO
         if (query.soldAt) {
             filter = { ...filter, status: query.status };
         }
+        // range soldAt
         if (query.rsa) {
             const range_soldAt = query.rsa.split(':');
             filter = {
@@ -125,6 +155,7 @@ export const createQueries = (query: Record<string, any>, type: TypeQuery = 'PRO
         if (query.expiredAt) {
             filter = { ...filter, expiredAt: query.expiredAt };
         }
+        // near expiredAt
         if (query.ne && query.ne === 'true') {
             filter = {
                 ...filter,

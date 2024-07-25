@@ -2,7 +2,7 @@
 
 export enum PaymentMethod {
     COD = 0,
-    ONLINE = 1,
+    VNPAY = 1,
 }
 
 export enum StatusInventoryReceipt {
@@ -82,4 +82,44 @@ export enum IPermission {
     READ_CATEGORY = 39,
     UPDATE_CATEGORY = 40,
     DELETE_CATEGORY = 41,
+}
+
+export enum EBankCode {
+    QRONLY = 'QRONLY',
+    MBAPP = 'MBAPP',
+    VNPAYQR = 'VNPAYQR',
+    VNBANK = 'VNBANK',
+    IB = 'IB',
+    ATM = 'ATM',
+    INTCARD = 'INTCARD',
+    VISA = 'VISA',
+    MASTERCARD = 'MASTERCARD',
+    JCB = 'JCB',
+    UPI = 'UPI',
+    VIB = 'VIB',
+    VIETCAPITALBANK = 'VIETCAPITALBANK',
+    SCB = 'SCB',
+    NCB = 'NCB',
+    SACOMBANK = 'SACOMBANK',
+    EXIMBANK = 'EXIMBANK',
+    MSBANK = 'MSBANK',
+    NAMABANK = 'NAMABANK',
+    VNMART = 'VNMART',
+    VIETINBANK = 'VIETINBANK',
+    VIETCOMBANK = 'VIETCOMBANK',
+    HDBANK = 'HDBANK',
+    DONGABANK = 'DONGABANK',
+    TPBANK = 'TPBANK',
+    OJB = 'OJB',
+    BIDV = 'BIDV',
+    TECHCOMBANK = 'TECHCOMBANK',
+    VPBANK = 'VPBANK',
+    AGRIBANK = 'AGRIBANK',
+    MBBANK = 'MBBANK',
+    ACB = 'ACB',
+    OCB = 'OCB',
+    IVB = 'IVB',
+    SHB = 'SHB',
+    APPLEPAY = 'APPLEPAY',
+    GOOGLEPAY = 'GOOGLEPAY',
 }

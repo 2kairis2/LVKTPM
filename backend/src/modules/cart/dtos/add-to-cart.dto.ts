@@ -1,9 +1,9 @@
 import { Type } from 'class-transformer';
-import { ArrayNotEmpty, IsArray, IsNotEmpty, IsNumber, IsPositive, IsString, ValidateNested } from 'class-validator';
+import { ArrayNotEmpty, IsArray, IsMongoId, IsNotEmpty, IsNumber, IsPositive, ValidateNested } from 'class-validator';
 
 class ItemCart {
     @IsNotEmpty()
-    @IsString()
+    @IsMongoId()
     product: string;
 
     @IsNotEmpty()

@@ -50,7 +50,6 @@ const orderService = {
 
         return orders;
     },
-
     getOrderById: async (id: StringOrObjectId, includes: string | Array<string> = '') => {
         const order = await Order.findById(id).populate(includes);
 
@@ -60,7 +59,6 @@ const orderService = {
 
         return order;
     },
-
     updateOrder: async (id: StringOrObjectId, data: any) => {
         const order = await Order.findById(id);
 
@@ -70,10 +68,6 @@ const orderService = {
 
         if (order.status === StatusOrder.DONE || order.status === StatusOrder.FAILED) {
             throw new CustomError('Không thể cập nhật đơn hàng', HttpStatus.BAD_REQUEST);
-        }
-
-        if (data.status === StatusOrder.DONE && order.status !== StatusOrder.PENDING) {
-            throw new CustomError('Không thể hoàn thành đơn hàng', HttpStatus.BAD_REQUEST);
         }
 
         if (data.status === StatusOrder.FAILED && order.status !== StatusOrder.PENDING) {
@@ -104,11 +98,22 @@ const orderService = {
             }
             productIds = [...new Set(productIds)];
             await cartService.deleteManyProduct(order.user, productIds);
+            order.paid = true;
+            order.receivedAt = new Date();
         }
 
         Object.assign(order, data);
 
         return order.save();
+    },
+    invalidOrder: async (id: StringOrObjectId, conditions?: Record<'status', Array<StatusOrder>>) => {
+        const order = await Order.findById(id);
+        if (!order) {
+            throw new CustomError('Đơn hàng không tìm thấy', HttpStatus.NOT_FOUND);
+        }
+        if (conditions?.status && !conditions.status.includes(order.status)) {
+            throw new CustomError('Không thể thực hiện thao tác', HttpStatus.BAD_REQUEST);
+        }
     },
 };
 

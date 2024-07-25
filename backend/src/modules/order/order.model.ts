@@ -42,6 +42,13 @@ const orderSchema = new mongoose.Schema(
             min: 0,
             required: true,
         },
+        receivedAt: {
+            type: Date,
+        },
+        paid: {
+            type: Boolean,
+            default: false,
+        },
         note: {
             type: String,
             default: '',

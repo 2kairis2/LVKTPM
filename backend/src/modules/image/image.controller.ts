@@ -32,7 +32,7 @@ const imageController = {
 
     getImage: async (req: Request, res: Response) => {
         try {
-            const { page, limit, query, sort, skip, includes } = getQueriesPaginate(req.query);
+            const { page, limit, query, sort, skip, includes } = getQueriesPaginate(req.query, 'IMAGE');
 
             const result = await imageService.getImage({
                 limit,
