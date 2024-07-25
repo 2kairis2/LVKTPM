@@ -100,13 +100,23 @@ const paymentController = {
                 responseWithData({ res, status: 200, data: { code: rspCode }, message: 'Giao dịch thành công' });
             }
 
+            const messageError = Object.prototype.hasOwnProperty.call(RESPONSE_CODE_VNPAY, rspCode)
+                ? RESPONSE_CODE_VNPAY[rspCode]
+                : 'Không xác định';
+
+            const payment_info = `Thanh toán thất bại qua VNPAY mã GD: ${orderId} - Ngân hàng: ${bankCode} - Mã giao dịch: ${bankTransNo} - Ngày thanh toán: ${paymentDate} - Lỗi: ${messageError}`;
+
+            await orderService.updateOrder(orderId as string, {
+                payment_info,
+                paid: false,
+                status: StatusOrder.FAILED,
+            });
+
             responseWithData({
                 res,
                 status: 200,
                 data: { code: rspCode },
-                message: Object.prototype.hasOwnProperty.call(RESPONSE_CODE_VNPAY, rspCode)
-                    ? RESPONSE_CODE_VNPAY[rspCode]
-                    : 'Không xác định',
+                message: messageError,
             });
         } catch (error) {
             handleError(error, res);
