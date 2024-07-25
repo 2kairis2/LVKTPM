@@ -2,12 +2,13 @@ import { Router } from 'express';
 
 import { validatePermission, validateDto, authorization } from '~/middlewares';
 import { IPermission } from '~/types';
-import { CreateUserDto, UpdateUserDto } from './dtos';
+import { UpdateUserDto } from './dtos';
+import { RegisterDto } from '~/modules/auth/dtos';
 import userController from './user.controller';
 
 const router = Router();
 
-router.post('/', validateDto(CreateUserDto), validatePermission(IPermission.CREATE_USER), userController.createUser);
+router.post('/', validateDto(RegisterDto), validatePermission(IPermission.CREATE_USER), userController.createUser);
 router.get('/', validatePermission(IPermission.READ_USER), userController.getUser);
 router.get('/info/:id', validatePermission(IPermission.READ_USER), userController.getUserById);
 router.get('/me', authorization, userController.getMe);

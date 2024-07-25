@@ -29,6 +29,12 @@ export enum StatusProduct {
     STOP = 3,
 }
 
+export enum EGender {
+    MALE = 0,
+    FE_MALE = 1,
+    OTHER = 2,
+}
+
 export enum IPermission {
     CREATE_PRODUCT = 0,
     READ_PRODUCT = 1,
