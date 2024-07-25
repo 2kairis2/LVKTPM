@@ -31,6 +31,10 @@ const orderSchema = new mongoose.Schema(
             type: String,
             default: '',
         },
+        staff: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User',
+        },
         status: {
             type: Number,
             enum: StatusOrder,

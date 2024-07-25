@@ -70,8 +70,9 @@ const orderController = {
         try {
             const { id } = req.params;
             const data = req.body;
+            const { _id: userId } = req.user;
 
-            const result = await orderService.updateOrder(id, data);
+            const result = await orderService.updateOrder(id, data, userId);
             return responseWithData({ res, data: result });
         } catch (error) {
             handleError(error, res);

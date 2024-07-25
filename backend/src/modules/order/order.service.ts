@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import Order from './order.model';
 import { CustomError } from '~/helper';
 import cartService from '~/modules/cart/cart.service';
@@ -59,7 +60,7 @@ const orderService = {
 
         return order;
     },
-    updateOrder: async (id: StringOrObjectId, data: any) => {
+    updateOrder: async (id: StringOrObjectId, data: any, userId?: StringOrObjectId) => {
         const order = await Order.findById(id);
 
         if (!order) {
@@ -72,6 +73,10 @@ const orderService = {
 
         if (data.status === StatusOrder.FAILED && order.status !== StatusOrder.PENDING) {
             throw new CustomError('Không thể hủy đơn hàng', HttpStatus.BAD_REQUEST);
+        }
+
+        if (data.status === StatusOrder.DELIVERING && order.status === StatusOrder.PENDING && userId) {
+            order.staff = userId as mongoose.Types.ObjectId;
         }
 
         if (data.status === StatusOrder.FAILED) {
