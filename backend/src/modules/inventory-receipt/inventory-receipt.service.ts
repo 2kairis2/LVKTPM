@@ -2,12 +2,15 @@ import InventoryReceipt from './inventory-receipt.model';
 import { CustomError } from '~/helper';
 import productDetailService from '~/modules/product-detail/product-detail.service';
 import productService from '~/modules/product/product.service';
-import { HttpStatus, IInventoryReceipt, StatusInventoryReceipt, StatusProduct } from '~/types';
+import { HttpStatus, IInventoryReceipt, StatusInventoryReceipt, StatusProduct, StringOrObjectId } from '~/types';
 
 const inventoryReceiptService = {
-    createInventoryReceipt: async (data: IInventoryReceipt) => {
+    createInventoryReceipt: async (data: IInventoryReceipt, userId: StringOrObjectId) => {
         await inventoryReceiptService.validateValue(data);
-        const inventoryReceipt = new InventoryReceipt(data);
+        const inventoryReceipt = new InventoryReceipt({
+            ...data,
+            staff: userId,
+        });
         return inventoryReceipt.save();
     },
     countDocuments: async (query: Record<string, any>) => {

@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import mongooseAutoPopulate from 'mongoose-autopopulate';
 
 const UserSchema = new mongoose.Schema({
     password: {
@@ -36,11 +37,14 @@ const UserSchema = new mongoose.Schema({
     avatar: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Image',
+        autopopulate: true,
     },
     role: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Role',
     },
 });
+
+UserSchema.plugin(mongooseAutoPopulate);
 
 export default mongoose.model('User', UserSchema);

@@ -24,6 +24,11 @@ const inventoryReceiptSchema = new mongoose.Schema(
                 },
             },
         ],
+        staff: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User',
+            required: true,
+        },
         supplier: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Supplier',

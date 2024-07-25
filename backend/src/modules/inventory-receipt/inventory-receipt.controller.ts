@@ -7,7 +7,8 @@ const inventoryReceiptController = {
     createInventoryReceipt: async (req: Request, res: Response) => {
         try {
             const data = req.body;
-            const result = await inventoryReceiptService.createInventoryReceipt(data);
+            const { _id: userId } = req.user;
+            const result = await inventoryReceiptService.createInventoryReceipt(data, userId);
             return responseWithData({ res, data: result });
         } catch (error) {
             handleError(error, res);
