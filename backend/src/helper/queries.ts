@@ -109,6 +109,12 @@ export const createQueries = (query: Record<string, any>, type: TypeQuery = 'PRO
         if (query.fullname) {
             filter = { ...filter, fullname: { $regex: query.fullname, $options: 'i' } };
         }
+        if (query.email) {
+            filter = { ...filter, email: { $regex: query.email, $options: 'i' } };
+        }
+        if (query.phone) {
+            filter = { ...filter, phone: { $regex: query.phone, $options: 'i' } };
+        }
     }
 
     if (type === 'INVENTORY_RECEIPT') {

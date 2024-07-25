@@ -17,7 +17,7 @@ const userController = {
 
     getUser: async (req: Request, res: Response) => {
         try {
-            const { page, limit, query, sort, skip, includes } = getQueriesPaginate(req.query);
+            const { page, limit, query, sort, skip, includes } = getQueriesPaginate(req.query, 'USER');
 
             const result = await userService.getUser({
                 limit,
