@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import mongooseAutoPopulate from 'mongoose-autopopulate';
 
 const productSchema = new mongoose.Schema({
     title: {
@@ -29,6 +30,7 @@ const productSchema = new mongoose.Schema({
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Image',
+            autopopulate: true,
         },
     ],
     category: {
@@ -60,5 +62,6 @@ const productSchema = new mongoose.Schema({
 });
 
 productSchema.index({ title: 'text', desc: 'text', content: 'text' });
+productSchema.plugin(mongooseAutoPopulate);
 
 export default mongoose.model('Product', productSchema);

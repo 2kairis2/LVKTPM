@@ -40,7 +40,7 @@ const cartService = {
     getMyCart: async (userId: StringOrObjectId) => {
         let cart = await Cart.findOne({
             user: userId,
-        });
+        }).populate('products.product');
         if (!cart) {
             cart = await cartService.createCart(userId);
         }
